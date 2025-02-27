@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: BosaKitchen
+
+  datasource:
+    url: jdbc:postgresql://localhost:5001/BosaKitchen
+    username: postgres
+    password: mother4me
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  security:
+    user:
+      name: admin
+      password: admin
+
+server:
+  port: 8081
+  error:
+    include-message: always
+    include-binding-errors: always

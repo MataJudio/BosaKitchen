@@ -1,38 +1,39 @@
-package com.bosakitchen.model;
+package com.BosaKitchen.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "delivery")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "deliveries")
 public class DeliveryModels {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long deliveryId;
+    private Long id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "order_id", nullable = false)
     private OrderModels order;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String deliveryAddress;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private DeliveryStatus deliveryStatus = DeliveryStatus.PENDING;
+    private Status deliveryStatus = Status.PENDING;
 
-    private String estimatedTime;
-    private String actualTime;
+    private LocalDateTime estimatedTime;
+    private LocalDateTime actualTime;
 
-    @Column(nullable = false, updatable = false)
-    private String createdAt = java.time.LocalDateTime.now().toString();
+    @Column(nullable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    public enum DeliveryStatus {
+    public enum Status {
         PENDING, OUT_FOR_DELIVERY, DELIVERED
     }
 }

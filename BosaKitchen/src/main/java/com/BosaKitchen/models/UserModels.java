@@ -1,21 +1,21 @@
-package com.bosakitchen.model;
+package com.BosaKitchen.models;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
+import java.util.Set;
 
-@Entity
-@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "users")
 public class UserModels {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;
 
     @Column(nullable = false, length = 50)
     private String firstName;
@@ -27,7 +27,7 @@ public class UserModels {
     private String email;
 
     @Column(nullable = false)
-    private String passwordHash;
+    private String password;
 
     @Column(length = 15)
     private String phoneNumber;
@@ -39,11 +39,15 @@ public class UserModels {
     @Column(nullable = false)
     private Role role = Role.CUSTOMER;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderModels> orders;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<OrderModels> orders;
 
-    @Column(nullable = false, updatable = false)
-    private String createdAt = java.time.LocalDateTime.now().toString();
+    public void setPasswordHash(String encode) {
+    }
+
+    public CharSequence getPasswordHash() {
+        return null;
+    }
 
     public enum Role {
         CUSTOMER, ADMIN

@@ -1,4 +1,4 @@
-package com.bosakitchen.model;
+package com.BosaKitchen.models;
 
 import jakarta.persistence.*;
 import lombok.*;
