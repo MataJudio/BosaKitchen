@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bosa Kitchen</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            /*background-color: #f4a261;*/
+            background-color: #264653;
+            padding: 1rem;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+        }
+        .space {
+            width: 35%;
+
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #f4a261;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 15px 0;
+        }
+
+        nav a:hover {
+            color: #f4a261;
+        }
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+        }
+
+        .carousel img {
+            width: 100%;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        section {
+            padding: 2rem;
+        }
+        ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px; /* Adds space between menu items */
+}
+
+img {
+    display: block;
+    margin-top: 10px;
+    border-radius: 10px; /* Makes images slightly rounded */
+}
+
+
+        #order-section {
+            display: none;
+            padding: 2rem;
+            background-color: #e9c46a;
+            text-align: center;
+            color: #264653;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #264653;
+            color: white;
+        }
+
+        @media screen and (min-width: 768px) {
+            #order-section {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <h1>Welcome to Bosa Kitchen</h1>
+        <img alt="logo" src="menu/Bosa Logo.jpeg" height="200px" width="200px"> 
+        <div class="space"></div>
+        
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#menu">Menu &amp; Pricing</a>
+        <a href="#order" onclick="toggleOrder()">Order</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <section id="home">
+        <div class="carousel">
+            <div class="carousel-inner">
+                <img src="menu/menu1.jpg" alt="Delicious Dish 1">
+                <img src="menu/menu12.jpg" alt="Delicious Dish 12">
+                <img src="menu/menu11.jpg" alt="Delicious Dish 11">
+                <img src="menu/menu15.jpg" alt="Delicious Dish 15">
+                <img src="menu/menu14.jpg" alt="Delicious Dish 14">
+                <img src="menu/menu16.jpg" alt="Delicious Dish 16">
+                <img src="menu/menu18.jpg" alt="Delicious Dish 18">
+                <img src="menu/menu3.jpg" alt="Delicious Dish 3">
+                <img src="menu/menu13.jpg" alt="Delicious Dish 13">
+                <img src="menu/menu5.jpg" alt="Delicious Dish 5">
+                <img src="menu/menu7.jpg" alt="Delicious Dish 7">
+                <img src="menu/menu8.jpg" alt="Delicious Dish 8">
+                <img src="menu/menu6.jpg" alt="Delicious Dish 6">
+
+            </div>
+            <div class="carousel-buttons">
+                <button onclick="prevSlide()">❮</button>
+                <button onclick="nextSlide()">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <h2>Menu &amp; Pricing</h2>
+        <ul>
+            <li>
+                Jollof Rice and Chicken - $15
+                <br>
+                <img src="menu/food/menu13.jpg" alt="Jollof Rice and Chicken" width="100">
+            </li>
+            <li>
+                Pounded Yam with Egusi Soup - $15
+                <br>
+                <img src="images/egusi-soup.jpg" alt="Pounded Yam with Egusi Soup" width="200">
+            </li>
+            <li>
+                Grilled Suya - $12
+                <br>
+                <img src="images/grilled-suya.jpg" alt="Grilled Suya" width="200">
+            </li>
+            <li>
+                Plantain and Beans - $10
+                <br>
+                <img src="images/plantain-beans.jpg" alt="Plantain and Beans" width="200">
+            </li>
+            <li>
+                Fried Rice and Turkey - $20
+                <br>
+                <img src="images/fried-rice.jpg" alt="Fried Rice and Turkey" width="200">
+            </li>
+            <li>
+                Sea Okro and Eba - $15
+                <br>
+                <img src="images/sea-okro.jpg" alt="Sea Okro and Eba" width="200">
+            </li>
+        </ul>
+    </section>
+    
+    
+
+      <section id="order-section">
+          <h2>Order Now</h2>
+          <div class="order-container">
+              <h3>Place Your Order</h3>
+              <form>
+                  <label for="name">Full Name</label>
+                  <input type="text" id="name" name="name" placeholder="Enter your name" required="">
+  
+                  <label for="dish">Select a Dish</label>
+                  <select id="dish" name="dish">
+                      <option value="jollof">Jollof Rice</option>
+                      <option value="yam">Pounded Yam with Egusi Soup</option>
+                      <option value="suya">Grilled Suya</option>
+                      <option value="plantain">Plantain and Beans</option>
+                      <option value="Fried rice">Fried rice and turkey</option>
+                    </select>
+
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter quantity" required="">
+    
+                    <label for="address">Delivery Address</label>
+                    <input type="text" id="address" name="address" placeholder="Enter your address" required="">
+    
+                    <label for="delivery-method">Delivery Method</label>
+                    <select id="delivery-method" name="delivery-method" required="">
+                        <option value="eat-in">Eat In</option>
+                        <option value="pick-up">Pick-Up</option>
+                        <option value="home-delivery">Home Delivery</option>
+                    </select>
+    
+                    <button type="submit">Submit Order</button>
+                </form>
+            </div>
+        </section>
+  
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>"Embark on a culinary journey through the rich and diverse flavors of Africa. At Bosa Kitchen, we take pride in crafting authentic dishes infused with tradition, vibrant spices, and the warmth of African hospitality.
+           Every bite tells a story of heritage and passion, bringing the essence of Africa to your table."</p>
+    </section>
+
+    <footer>
+        <p>© 2025 Bosa Kitchen. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+
+        function nextSlide() {
+            const carouselInner = document.querySelector('.carousel-inner');
+            const totalSlides = document.querySelectorAll('.carousel-inner img').length;
+            currentIndex = (currentIndex + 1) % totalSlides;
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function prevSlide() {
+            const carouselInner = document.querySelector('.carousel-inner');
+            const totalSlides = document.querySelectorAll('.carousel-inner img').length;
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function toggleOrder() {
+            const orderSection = document.getElementById('order-section');
+            if (orderSection.style.display === 'none' || orderSection.style.display === '') {
+                orderSection.style.display = 'block';
+            } else {
+                orderSection.style.display = 'none';
+            }
+        }
+    </script>
+
+
+</body></html>
